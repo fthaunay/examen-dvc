@@ -1,0 +1,50 @@
+2024-10-13 15:55:41,358 - custom_logger - INFO - Custom logger module initialized.
+2024-10-13 15:55:42,376 - custom_logger - INFO - >>>>> stage Model trainer stage started <<<<<
+2024-10-13 15:55:42,382 - custom_logger - INFO - yaml file: /home/ubuntu/examen_dvc/examen-dvc/src/config.yaml loaded successfully
+2024-10-13 15:55:42,383 - custom_logger - INFO - yaml file: /home/ubuntu/examen_dvc/examen-dvc/src/models_module_def/params.yaml loaded successfully
+2024-10-13 15:55:42,386 - custom_logger - INFO - yaml file: /home/ubuntu/examen_dvc/examen-dvc/src/data_module_def/schema.yaml loaded successfully
+2024-10-13 15:55:42,387 - custom_logger - INFO - created directory at: models
+2024-10-13 15:55:42,387 - custom_logger - ERROR - [Errno 2] No such file or directory: 'data/processed/X_train.csv'
+Traceback (most recent call last):
+  File "/home/ubuntu/examen_dvc/examen-dvc/src/pipeline_steps/stage04_model_trainer.py", line 30, in <module>
+    obj.main()
+  File "/home/ubuntu/examen_dvc/examen-dvc/src/pipeline_steps/stage04_model_trainer.py", line 23, in main
+    model_trainer.train()
+  File "/home/ubuntu/examen_dvc/examen-dvc/src/models_module_def/model_trainer.py", line 12, in train
+    X_train = pd.read_csv(self.config.X_train_path)
+  File "/home/ubuntu/examen_dvc/exam_dvc_env/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 912, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/home/ubuntu/examen_dvc/exam_dvc_env/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 577, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/home/ubuntu/examen_dvc/exam_dvc_env/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1407, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/home/ubuntu/examen_dvc/exam_dvc_env/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1661, in _make_engine
+    self.handles = get_handle(
+  File "/home/ubuntu/examen_dvc/exam_dvc_env/lib/python3.8/site-packages/pandas/io/common.py", line 859, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'data/processed/X_train.csv'
+2024-10-13 15:57:12,109 - custom_logger - INFO - Custom logger module initialized.
+2024-10-13 15:57:13,531 - custom_logger - INFO - >>>>> stage Model trainer stage started <<<<<
+2024-10-13 15:57:13,537 - custom_logger - INFO - yaml file: /home/ubuntu/examen_dvc/examen-dvc/src/config.yaml loaded successfully
+2024-10-13 15:57:13,538 - custom_logger - INFO - yaml file: /home/ubuntu/examen_dvc/examen-dvc/src/models_module_def/params.yaml loaded successfully
+2024-10-13 15:57:13,541 - custom_logger - INFO - yaml file: /home/ubuntu/examen_dvc/examen-dvc/src/data_module_def/schema.yaml loaded successfully
+2024-10-13 15:57:13,542 - custom_logger - INFO - created directory at: models
+2024-10-13 15:57:13,544 - custom_logger - ERROR - [Errno 2] No such file or directory: 'data/processed/X_train_scaled.csv'
+Traceback (most recent call last):
+  File "/home/ubuntu/examen_dvc/examen-dvc/src/pipeline_steps/stage04_model_trainer.py", line 30, in <module>
+    obj.main()
+  File "/home/ubuntu/examen_dvc/examen-dvc/src/pipeline_steps/stage04_model_trainer.py", line 23, in main
+    model_trainer.train()
+  File "/home/ubuntu/examen_dvc/examen-dvc/src/models_module_def/model_trainer.py", line 13, in train
+    X_train = pd.read_csv(self.config.X_train_path)
+  File "/home/ubuntu/examen_dvc/exam_dvc_env/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 912, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/home/ubuntu/examen_dvc/exam_dvc_env/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 577, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/home/ubuntu/examen_dvc/exam_dvc_env/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1407, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/home/ubuntu/examen_dvc/exam_dvc_env/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1661, in _make_engine
+    self.handles = get_handle(
+  File "/home/ubuntu/examen_dvc/exam_dvc_env/lib/python3.8/site-packages/pandas/io/common.py", line 859, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'data/processed/X_train_scaled.csv'

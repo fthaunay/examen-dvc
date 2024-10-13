@@ -13,17 +13,26 @@ data_transformation:
   root_dir: data/processed
   data_path: data/processed
 
+gridsearch:
+  root_dir: models
+  X_train_path: data/processed/X_train_scaled.csv
+  X_test_path: data/processed/X_test_scaled.csv
+  y_train_path: data/processed/y_train.csv
+  y_test_path: data/processed/y_test.csv
+  model_name: model.joblib
+  params_file: params.pkl
+
 model_trainer:
   root_dir: models
-  X_train_path: data/processed/X_train.csv
-  X_test_path: data/processed/X_test.csv
+  X_train_path: data/processed/X_train_scaled.csv
+  X_test_path: data/processed/X_test_scaled.csv
   y_train_path: data/processed/y_train.csv
   y_test_path: data/processed/y_test.csv
   model_name: model.joblib
 
 model_evaluation:
   root_dir: metrics
-  X_test_path: data/processed/X_test.csv
+  X_test_path: data/processed/X_test_scaled.csv
   y_test_path: data/processed/y_test.csv
   model_path: models/model.joblib
   metric_file_name: metrics/metrics.json

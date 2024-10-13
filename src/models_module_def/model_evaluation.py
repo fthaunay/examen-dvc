@@ -55,7 +55,8 @@ class ModelEvaluation:
                 # Register the model
                 # There are other ways to use the Model Registry, which depends on the use case.
 
-                mlflow.sklearn.log_model(model, "model", registered_model_name="ElasticnetModel")
+                mlflow.sklearn.log_model(model, "model", 
+                                         registered_model_name="ElasticnetModel")
 
             else:
                 mlflow.sklearn.log_model(model, "model") 

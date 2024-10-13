@@ -23,6 +23,17 @@ class DataTransformationConfig:
     data_path: Path
     
 
+
+@dataclass(frozen=True)
+class GridSearchConfig:
+    root_dir: Path
+    X_train_path: Path
+    y_train_path: Path
+    X_test_path: Path
+    y_test_path: Path
+    params_file: Path
+
+
 @dataclass(frozen=True)
 class ModelTrainerConfig:
     root_dir: Path

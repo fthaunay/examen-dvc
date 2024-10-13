@@ -3,6 +3,7 @@ from src.common_utils import read_yaml, create_directories
 from src.entity import (DataIngestionConfig, 
                         DataPreparationConfig, 
                         DataTransformationConfig, 
+                        GridSearchConfig,
                         ModelTrainerConfig, 
                         ModelEvaluationConfig)
 
@@ -56,10 +57,26 @@ class ConfigurationManager:
           )
 
         return data_transformation_config
-    
+
+    def get_gridsearch_config(self) -> GridSearchConfig:
+        config = self.config.gridsearch
+          
+        create_directories([config.root_dir])
+
+        gridsearch_config = GridSearchConfig(
+                root_dir=config.root_dir,
+                X_train_path=config.X_train_path,
+                y_train_path=config.y_train_path,
+                X_test_path=config.X_test_path,
+                y_test_path=config.y_test_path,
+                params_file=config.params_file
+          )
+
+        return gridsearch_config
+
     def get_model_trainer_config(self) -> ModelTrainerConfig:
         config = self.config.model_trainer
-        params = self.params.ElasticNet
+        params = self.params.Regression
           
         create_directories([config.root_dir])
 
