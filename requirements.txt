@@ -1,0 +1,17 @@
+dvc
+dvc[s3]
+pandas 
+mlflow
+notebook
+numpy
+scikit-learn
+matplotlib
+pydantic
+python-box
+pyYAML
+tqdm
+ensure
+joblib
+types-PyYAML
+fastapi
+dagshub
