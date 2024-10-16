@@ -1,0 +1,110 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python3 src/pipeline_steps/stage00_data_ingestion.py
+    deps:
+    - path: https://datascientest-mlops.s3.eu-west-1.amazonaws.com/mlops_dvc_fr/raw.csv
+      hash: md5
+      checksum: '"617b56af2992376d5c3e91ad80823898"'
+      size: 333757
+    outs:
+    - path: data/raw/raw.csv
+      hash: md5
+      md5: 617b56af2992376d5c3e91ad80823898
+      size: 333757
+  data_preparation:
+    cmd: python3 src/pipeline_steps/stage01_data_preparation.py
+    deps:
+    - path: data/raw/raw.csv
+      hash: md5
+      md5: 617b56af2992376d5c3e91ad80823898
+      size: 333757
+    outs:
+    - path: data/processed/X_test.csv
+      hash: md5
+      md5: d3be1be617366bc81a9254f075039b51
+      size: 78770
+    - path: data/processed/X_train.csv
+      hash: md5
+      md5: 38e9f56c92d20ee33257e3918c901e7e
+      size: 183322
+    - path: data/processed/y_test.csv
+      hash: md5
+      md5: e064ea83fe860a49b9e9cfab1e8ec5a7
+      size: 9697
+    - path: data/processed/y_train.csv
+      hash: md5
+      md5: 4f1097f0b9053f0a94904c047541877f
+      size: 22710
+  data_transformation:
+    cmd: python3 src/pipeline_steps/stage02_data_transformation.py
+    deps:
+    - path: data/processed/X_test.csv
+      hash: md5
+      md5: d3be1be617366bc81a9254f075039b51
+      size: 78770
+    - path: data/processed/X_train.csv
+      hash: md5
+      md5: 38e9f56c92d20ee33257e3918c901e7e
+      size: 183322
+    outs:
+    - path: data/processed/X_test_scaled.csv
+      hash: md5
+      md5: 836cbe4115c58897d13d908b75c8bca7
+      size: 85534
+    - path: data/processed/X_train_scaled.csv
+      hash: md5
+      md5: 2d7a0dd5274c93cb7751da42c19c0cb7
+      size: 198582
+  grid_search:
+    cmd: python3 src/pipeline_steps/stage03_gridsearch.py
+    deps:
+    - path: data/processed/X_test_scaled.csv
+      hash: md5
+      md5: 836cbe4115c58897d13d908b75c8bca7
+      size: 85534
+    - path: data/processed/X_train_scaled.csv
+      hash: md5
+      md5: 2d7a0dd5274c93cb7751da42c19c0cb7
+      size: 198582
+    - path: data/processed/y_test.csv
+      hash: md5
+      md5: e064ea83fe860a49b9e9cfab1e8ec5a7
+      size: 9697
+    - path: data/processed/y_train.csv
+      hash: md5
+      md5: 4f1097f0b9053f0a94904c047541877f
+      size: 22710
+    outs:
+    - path: models/params.pkl
+      hash: md5
+      md5: 3f6e24bf2fe8f19dd3d4180cd73f8d62
+      size: 604
+  model_trainer:
+    cmd: python3 src/pipeline_steps/stage04_model_trainer.py
+    deps:
+    - path: data/processed/X_test_scaled.csv
+      hash: md5
+      md5: 836cbe4115c58897d13d908b75c8bca7
+      size: 85534
+    - path: data/processed/X_train_scaled.csv
+      hash: md5
+      md5: 2d7a0dd5274c93cb7751da42c19c0cb7
+      size: 198582
+    - path: data/processed/y_test.csv
+      hash: md5
+      md5: e064ea83fe860a49b9e9cfab1e8ec5a7
+      size: 9697
+    - path: data/processed/y_train.csv
+      hash: md5
+      md5: 4f1097f0b9053f0a94904c047541877f
+      size: 22710
+    - path: models/params.pkl
+      hash: md5
+      md5: 3f6e24bf2fe8f19dd3d4180cd73f8d62
+      size: 604
+    outs:
+    - path: models/model.joblib
+      hash: md5
+      md5: 98b5ca8b1e35134c4e3ad21908e73ffc
+      size: 959
