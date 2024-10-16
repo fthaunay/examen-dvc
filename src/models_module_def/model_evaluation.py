@@ -56,7 +56,7 @@ class ModelEvaluation:
                 # There are other ways to use the Model Registry, which depends on the use case.
 
                 mlflow.sklearn.log_model(model, "model", 
-                                         registered_model_name="ElasticnetModel")
+                                         registered_model_name="Regression Logistique")
 
             else:
                 mlflow.sklearn.log_model(model, "model") 
