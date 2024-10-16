@@ -42,8 +42,7 @@ class ModelTrainerConfig:
     X_test_path: Path
     y_test_path: Path
     model_name: str
-    alpha: float
-    l1_ratio: float
+    params_file: Path
 
 
 @dataclass(frozen=True)

@@ -29,6 +29,7 @@ model_trainer:
   y_train_path: data/processed/y_train.csv
   y_test_path: data/processed/y_test.csv
   model_name: model.joblib
+  params_file: params.pkl
 
 model_evaluation:
   root_dir: metrics

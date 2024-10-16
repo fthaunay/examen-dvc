@@ -30,6 +30,7 @@ class ModelGridSearch:
 
         # best estimator
         print(Ridge_reg.best_estimator_)
+        
         with open(os.path.join(self.config.root_dir, self.config.params_file), 'wb') as file: 
             pickle.dump(Ridge_reg.best_estimator_, file) 
  

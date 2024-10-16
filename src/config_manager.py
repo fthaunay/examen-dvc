@@ -76,7 +76,6 @@ class ConfigurationManager:
 
     def get_model_trainer_config(self) -> ModelTrainerConfig:
         config = self.config.model_trainer
-        params = self.params.Regression
           
         create_directories([config.root_dir])
 
@@ -87,8 +86,7 @@ class ConfigurationManager:
                 X_test_path=config.X_test_path,
                 y_test_path=config.y_test_path,
                 model_name=config.model_name,
-                alpha=params.alpha,
-                l1_ratio=params.l1_ratio
+                params_file=config.params_file
           )
 
         return model_trainer_config

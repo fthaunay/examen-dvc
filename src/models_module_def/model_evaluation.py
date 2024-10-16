@@ -11,8 +11,8 @@ from src.entity import ModelEvaluationConfig
 from src.common_utils import save_json
 
 # To fill in with your repo information
-dagshub.init(repo_owner='ssime-git', 
-             repo_name='masterclass_overview_mlops_wine_quality_student', 
+dagshub.init(repo_owner='florian.thaunay', 
+             repo_name='examen-dvc', 
              mlflow=True)
 
 

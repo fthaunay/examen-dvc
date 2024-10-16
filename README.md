@@ -20,4 +20,8 @@ Vous devez dans un premier temps *Fork* le repo et puis le cloner pour travaille
 Vous pouvez télécharger les données à travers le lien suivant : https://datascientest-mlops.s3.eu-west-1.amazonaws.com/mlops_dvc_fr/raw.csv.
 
 
+dvc init  
+dvc remote add -d remote_storage data  
+
+
 

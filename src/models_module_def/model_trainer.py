@@ -13,7 +13,14 @@ class ModelTrainer:
         X_train = pd.read_csv(self.config.X_train_path)
         y_train = pd.read_csv(self.config.y_train_path)
 
-        lr = ElasticNet(alpha=self.config.alpha, l1_ratio=self.config.l1_ratio, random_state=42)
-        lr.fit(X_train, y_train)
 
-        joblib.dump(lr, os.path.join(self.config.root_dir, self.config.model_name))
+        import pickle
+
+        # open a file, where you stored the pickled data
+        with open(os.path.join(self.config.root_dir, self.config.params_file), 'rb') as file: 
+        # dump information to that file
+            lr = pickle.load(file)
+          
+            lr.fit(X_train, y_train)
+
+            joblib.dump(lr, os.path.join(self.config.root_dir, self.config.model_name))

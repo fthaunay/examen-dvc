@@ -1,5 +1,6 @@
 import sys
 from pathlib import Path
+import os
 
 # Add parent directory to path
 parent_folder = str(Path(__file__).parent.parent.parent)
@@ -32,6 +33,7 @@ class DataPreparationTrainingPipeline:
 if __name__ == '__main__':
     try:
         logger.info(f">>>>> stage {STAGE_NAME} started <<<<<")
+        # os.chdir(parent_folder)
         obj = DataPreparationTrainingPipeline()
         obj.main()
         logger.info(f">>>>> stage {STAGE_NAME} completed <<<<<\n\nx=======x")
