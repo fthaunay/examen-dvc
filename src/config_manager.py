@@ -104,7 +104,7 @@ class ConfigurationManager:
                 model_path=config.model_path,
                 metric_file_name=config.metric_file_name,
                 all_params=params,
-                mlflow_uri="https://dagshub.com/florian.thaunay/examen-dvc",
+                mlflow_uri="https://dagshub.com/florian.thaunay/examen-dvc.mlflow",
           )
 
         return model_evaluation_config

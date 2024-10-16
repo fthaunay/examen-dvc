@@ -7,6 +7,9 @@ import joblib
 from pathlib import Path
 from urllib.parse import urlparse
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+parent_folder = str(Path(__file__).parent.parent.parent)
+import sys
+sys.path.append(parent_folder)
 from src.entity import ModelEvaluationConfig
 from src.common_utils import save_json
 
@@ -30,7 +33,8 @@ class ModelEvaluation:
         X_test = pd.read_csv(self.config.X_test_path)
         y_test = pd.read_csv(self.config.y_test_path)
         model = joblib.load(self.config.model_path)
-
+        print("mlflow uri ?")
+        print(self.config.mlflow_uri)
         mlflow.set_registry_uri(self.config.mlflow_uri)
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 
